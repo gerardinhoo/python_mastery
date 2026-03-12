@@ -21,17 +21,26 @@ def check_project_directory():
         logging.info(file)
 
 
+
 def run_shell_command():
 
-    logging.info("Running shell command")
+    logging.info("Running shell commands")
 
-    result = subprocess.run(
-        ["git", "status"],
-        capture_output=True,
-        text=True
-    )
+    commands = [
+        ["python3", "--version"],
+        ["git", "--version"],
+        ["git", "status"]
+    ]
 
-    print(result.stdout)
+    for command in commands:
+
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True
+        )
+
+        print(result.stdout)
 
 
 def main():
